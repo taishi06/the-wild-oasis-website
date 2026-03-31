@@ -1,5 +1,5 @@
 import SubmitButton from '@/app/_components/SubmitButton';
-import { getBooking, getBookings } from '@/app/_lib/data-service';
+import { getBooking } from '@/app/_lib/data-service';
 import { updateReservation } from '@/app/_lib/actions';
 
 // generate metadata based on data
@@ -9,13 +9,6 @@ export async function generateMetadata({ params }) {
 	return {
 		title: `Reservation #${id}`,
 	};
-}
-
-// params that exist and can be pre-render upon prod build
-export async function generateStaticParams() {
-	const bookings = await getBookings();
-
-	return bookings.map((booking) => ({ bookingId: String(booking.id) }));
 }
 
 export default async function Page({ params }) {
